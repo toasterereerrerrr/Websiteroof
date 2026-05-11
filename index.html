@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Schedule Appointment</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 300px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px 20px;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    #formBox {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Appointment Scheduler</h2>
+
+    <button onclick="showForm()">Schedule Appointment</button>
+
+    <div id="formBox">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="text" id="address" placeholder="Your Address" required />
+
+      <button onclick="sendEmail()">Submit</button>
+    </div>
+  </div>
+
+  <script>
+    function showForm() {
+      document.getElementById("formBox").style.display = "block";
+    }
+
+    function sendEmail() {
+      const name = document.getElementById("name").value;
+      const address = document.getElementById("address").value;
+
+      const subject = encodeURIComponent("New Appointment Request");
+      const body = encodeURIComponent(
+        "Name: " + name + "\nAddress: " + address
+      );
+
+      window.location.href =
+        `mailto:arunmanu2012@gmail.com?subject=${subject}&body=${body}`;
+    }
+  </script>
+
+</body>
+</html>
